@@ -54,7 +54,7 @@ class P14LongestCommonPrefix(object):
             shortest_string_value = strs[shortest_string_index]
 
             for i in range(0, len(strs) + 1):
-                longest_common_prefix_candidate = shortest_string_value[0:len(shortest_string_value)-i]
+                longest_common_prefix_candidate = shortest_string_value[0:len(shortest_string_value)-i].lower()
                 find_count = 0
                 for item in strs:
                     if item.lower().find(longest_common_prefix_candidate) != -1:
