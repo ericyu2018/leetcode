@@ -34,20 +34,16 @@ class P1TwoSum(object):
         :type target: int
         :rtype: List[int]
         """
-        i = 0
-        j = 0
-        while i < len(nums):
-            while j < len(nums):
-                if i != j and nums[i] + nums[j] == target:
+
+        for i in range(0, len(nums)):
+            for j in range(i+1, len(nums)):
+                if nums[i] + nums[j] == target:
                     return i, j
-                else:
-                    j = j + 1
-            i = i + 1
 
         raise Exception('no solution')
 
 if __name__ == '__main__':
-    nums = [2, 7, 11, 15]
-    target = 9
+    nums = [3, 2, 4]
+    target = 6
     print(list(P1TwoSum.two_sum(nums, target)))
 
