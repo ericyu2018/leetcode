@@ -47,7 +47,7 @@ class P7ReverseInteger(object):
 
         x_str = str(x)
         if x_str.endswith('0'):
-            return 0
+            return P7ReverseInteger.reverse(int(x/10))
 
         if x_str.startswith('-'):
             return -1 * P7ReverseInteger.reverse(x * (-1))
@@ -59,10 +59,11 @@ class P7ReverseInteger(object):
         for item in x_list:
             x_reversed_str = x_reversed_str + item
 
-        try:
-            return int(x_reversed_str)
-        except OverflowError:
+        result = int(x_reversed_str)
+        if result > pow(2, 31) - 1 or result < - pow(2, 31):
             return 0
+        else:
+            return result
 
 
 if __name__ == '__main__':
@@ -72,5 +73,7 @@ if __name__ == '__main__':
     print(P7ReverseInteger.reverse(120))
     print(P7ReverseInteger.reverse(-321))
     print(P7ReverseInteger.reverse(123))
+    print(P7ReverseInteger.reverse(1534236469))
+    print(P7ReverseInteger.reverse(1563847412))
 
 
