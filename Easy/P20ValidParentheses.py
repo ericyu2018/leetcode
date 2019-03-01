@@ -65,7 +65,7 @@ class P20ValidParentheses(object):
         str_list = list(s)
 
         for i in range(0, len(str_list)):
-                if str_list[i] in rule_map.keys() and str_list[i+1] == rule_map[str_list[i]]:
+                if str_list[i] in rule_map.keys() and i+1 < len(str_list) and str_list[i+1] == rule_map[str_list[i]]:
                     str_list.pop(i)
                     str_list.pop(i)
 
@@ -80,6 +80,7 @@ class P20ValidParentheses(object):
 
 if __name__ == '__main__':
     print(P20ValidParentheses.is_valid('()'))
+    print(P20ValidParentheses.is_valid('(('))
     print(P20ValidParentheses.is_valid('()[]{}'))
     print(P20ValidParentheses.is_valid('(]'))
     print(P20ValidParentheses.is_valid('([)]'))
