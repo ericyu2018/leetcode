@@ -39,7 +39,14 @@ class P14LongestCommonPrefix(object):
 
         strs.sort()
 
-        if strs[0][0] != strs[len(strs)-1][0]:
+        if len(strs) == 0:
+            print('Explanation: There is no common prefix among the input strings.')
+            return ""
+
+        if len(strs) == 1:
+            return strs[0]
+
+        if len(strs[0]) == 0 or len(strs[len(strs)-1]) == 0 or strs[0][0] != strs[len(strs)-1][0]:
             print('Explanation: There is no common prefix among the input strings.')
             return ""
 
@@ -57,7 +64,7 @@ class P14LongestCommonPrefix(object):
                 longest_common_prefix_candidate = shortest_string_value[0:len(shortest_string_value)-i].lower()
                 find_count = 0
                 for item in strs:
-                    if item.lower().find(longest_common_prefix_candidate) != -1:
+                    if item.lower().startswith(longest_common_prefix_candidate):
                         find_count = find_count + 1
 
                     if find_count == len(strs):
@@ -65,6 +72,13 @@ class P14LongestCommonPrefix(object):
 
 
 if __name__ == '__main__':
+    '''
     print(P14LongestCommonPrefix.longest_common_prefix(["flower", "flow", "flight"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["dog", "racecar", "car"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["some", "flow", "same", "for"]))
+    print(P14LongestCommonPrefix.longest_common_prefix([]))
+    print(P14LongestCommonPrefix.longest_common_prefix([""]))
+    print(P14LongestCommonPrefix.longest_common_prefix(["", ""]))
+    print(P14LongestCommonPrefix.longest_common_prefix(["a"]))
+    '''
+    print(P14LongestCommonPrefix.longest_common_prefix(["abca", "aba", "aaab"]))
