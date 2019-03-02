@@ -72,7 +72,6 @@ class P14LongestCommonPrefix(object):
 
 
 if __name__ == '__main__':
-    '''
     print(P14LongestCommonPrefix.longest_common_prefix(["flower", "flow", "flight"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["dog", "racecar", "car"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["some", "flow", "same", "for"]))
@@ -80,5 +79,4 @@ if __name__ == '__main__':
     print(P14LongestCommonPrefix.longest_common_prefix([""]))
     print(P14LongestCommonPrefix.longest_common_prefix(["", ""]))
     print(P14LongestCommonPrefix.longest_common_prefix(["a"]))
-    '''
     print(P14LongestCommonPrefix.longest_common_prefix(["abca", "aba", "aaab"]))
