@@ -55,11 +55,12 @@ class P67AddBinary(object):
                         sum_str_list[index] = '0'
                         sum_str_list[index - 1] = str(int(sum_str_list[index - 1]) + 1)
 
-        result =''
+        result = ''
         for index in range(0, len(sum_str_list)):
             result = result + sum_str_list[index]
 
         return result
+
 
 if __name__ == '__main__':
     print(P67AddBinary.add_binary("1010","1011"))
