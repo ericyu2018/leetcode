@@ -43,6 +43,9 @@ class P88MergeSortedArray(object):
         if len(nums1) - m < n:
             raise Exception('Not enough space in nums1')
 
+        if len(nums2) != n:
+            raise ValueError('nums2 length provided is not correct')
+
         for item in nums2:
             nums1[m] = item
             m = m + 1
