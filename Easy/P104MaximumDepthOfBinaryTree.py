@@ -57,7 +57,7 @@ class P104MaximumDepthOfBinaryTree(object):
             tree_depth, node = my_queue.get()
 
             if node is not None:
-                # print(node.val)
+                print(node.val)
                 my_queue.put((tree_depth + 1, node.left))
                 my_queue.put((tree_depth + 1, node.right))
 
