@@ -42,8 +42,27 @@ class P1TwoSum(object):
 
         raise Exception('no solution')
 
+    @staticmethod
+    def twoSum(nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+
+        nums_map = dict()
+
+        for i in range(0, len(nums)):
+            complement = target - nums[i]
+            if complement in nums_map.keys():
+                return nums_map.get(complement), i
+            nums_map[nums[i]] = i
+
+        raise Exception('no solution')
+
 if __name__ == '__main__':
     nums = [3, 2, 4]
     target = 6
     print(list(P1TwoSum.two_sum(nums, target)))
+    print(list(P1TwoSum.twoSum(nums, target)))
 
