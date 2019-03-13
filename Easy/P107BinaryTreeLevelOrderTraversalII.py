@@ -64,6 +64,31 @@ class P107BinaryTreeLevelOrderTraversalII(object):
             my_list.append(result_dict[i])
         return my_list
 
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+
+        stack = [root]
+        ans = []
+
+        while stack:
+            tmp_stack = []
+            tmp_ans = []
+            for i in stack:
+                tmp_ans.append(i.val)
+                if i.left:
+                    tmp_stack.append(i.left)
+                if i.right:
+                    tmp_stack.append(i.right)
+            stack = tmp_stack
+            ans.append(tmp_ans)
+
+        return ans[::-1]
+
 if __name__ == '__main__':
     n1 = TreeNode(1)
     n2 = TreeNode(2)
@@ -82,3 +107,6 @@ if __name__ == '__main__':
 
     print(P107BinaryTreeLevelOrderTraversalII().level_order_bottom(n1))
     print(P107BinaryTreeLevelOrderTraversalII().level_order_bottom(None))
+
+    print(P107BinaryTreeLevelOrderTraversalII().levelOrderBottom(n1))
+    print(P107BinaryTreeLevelOrderTraversalII().levelOrderBottom(None))
