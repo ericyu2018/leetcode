@@ -49,15 +49,12 @@ class P9PalindromeNumber(object):
         if abs(x) != x:
             return False
 
+        x_copy = x
         remainder_list = list()
-
-        quotient = x // 10
-        remainder = x % 10
-        remainder_list.append(remainder)
-
-        while quotient != 0:
-            quotient, remainder = divmod(quotient, 10)
+        while x != 0:
+            quotient, remainder = divmod(x, 10)
             remainder_list.append(remainder)
+            x = quotient
 
         remainder_list_length = len(remainder_list)
         result = 0
@@ -65,7 +62,7 @@ class P9PalindromeNumber(object):
             result = remainder_list.pop(0) * pow(10, remainder_list_length - 1) + result
             remainder_list_length = remainder_list_length - 1
 
-        return x == result
+        return x_copy == result
 
 
 if __name__ == '__main__':
