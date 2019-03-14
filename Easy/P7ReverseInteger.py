@@ -59,12 +59,39 @@ class P7ReverseInteger(object):
         for item in x_list:
             x_reversed_str = x_reversed_str + item
 
-        result = int(x_reversed_str)
+        try:
+            result = int(x_reversed_str)
+        except OverflowError:
+            result = 0
+
         if result > pow(2, 31) - 1 or result < - pow(2, 31):
             return 0
         else:
             return result
 
+    @staticmethod
+    def reverse2(x):
+        rev_value = 0
+
+        if x == 0:
+            return 0
+
+        if abs(x) != x:
+            return -1 * P7ReverseInteger.reverse2(abs(x))
+
+        while x != 0:
+            q, r = divmod(x, 10)
+            x = q
+
+            try:
+                rev_value = rev_value * 10 + r
+            except OverflowError:
+                rev_value = 0
+
+        if rev_value > pow(2, 31) - 1 or rev_value < - pow(2, 31):
+            return 0
+        else:
+            return rev_value
 
 if __name__ == '__main__':
     print(P7ReverseInteger.reverse(123))
@@ -76,4 +103,8 @@ if __name__ == '__main__':
     print(P7ReverseInteger.reverse(1534236469))
     print(P7ReverseInteger.reverse(1563847412))
 
-
+    print(P7ReverseInteger.reverse2(123))
+    print(P7ReverseInteger.reverse2(-321))
+    print(P7ReverseInteger.reverse2(0))
+    print(P7ReverseInteger.reverse2(1534236469))
+    print(P7ReverseInteger.reverse2(1563847412))
