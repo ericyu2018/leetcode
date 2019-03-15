@@ -49,6 +49,12 @@ class P9PalindromeNumber(object):
         if abs(x) != x:
             return False
 
+        if x % 10 == 0 and x != 0:
+            return False
+
+        if x == 0:
+            return True
+
         x_copy = x
         remainder_list = list()
         while x != 0:
@@ -56,6 +62,7 @@ class P9PalindromeNumber(object):
             remainder_list.append(remainder)
             x = quotient
 
+        print(remainder_list)
         remainder_list_length = len(remainder_list)
         result = 0
         while remainder_list_length > 0:
@@ -64,9 +71,40 @@ class P9PalindromeNumber(object):
 
         return x_copy == result
 
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if not isinstance(x, int):
+            return False
+
+        if abs(x) != x:
+            return False
+
+        if x % 10 == 0 and x != 0:
+            return False
+
+        if x == 0:
+            return True
+
+        reverted_number = 0
+        while x > reverted_number:
+            q, r = divmod(x, 10)
+            x = q
+            reverted_number = reverted_number * 10 + r
+
+        return x == reverted_number or x == int(reverted_number/10)
 
 if __name__ == '__main__':
     print(P9PalindromeNumber.is_palindrome(123))
     print(P9PalindromeNumber.is_palindrome(121))
     print(P9PalindromeNumber.is_palindrome(-121))
     print(P9PalindromeNumber.is_palindrome(0))
+    print(P9PalindromeNumber.is_palindrome(100))
+    print('*' * 50)
+    print(P9PalindromeNumber().isPalindrome(123))
+    print(P9PalindromeNumber().isPalindrome(121))
+    print(P9PalindromeNumber().isPalindrome(-121))
+    print(P9PalindromeNumber().isPalindrome(0))
+    print(P9PalindromeNumber().isPalindrome(100))
