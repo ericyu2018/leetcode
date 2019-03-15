@@ -50,10 +50,9 @@ class P118PascalsTriangle(object):
 
     def generate_next_line(self, current_line):
         next_line = list()
-        current_line_length = len(current_line)
         start_index = 0
 
-        while start_index < current_line_length - 1:
+        while start_index < len(current_line) - 1:
             next_line.append(current_line[start_index] + current_line[start_index + 1])
             start_index += 1
 
@@ -61,7 +60,6 @@ class P118PascalsTriangle(object):
         next_line.append(1)
 
         return next_line
-
 
 if __name__ == '__main__':
     P118PascalsTriangle().generate(5)
