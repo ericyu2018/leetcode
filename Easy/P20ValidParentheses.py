@@ -78,6 +78,32 @@ class P20ValidParentheses(object):
 
         return False
 
+
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        # The stack to keep track of opening brackets.
+        stack = []
+
+        mapping = {")": "(", "}": "{", "]": "["}
+
+        for char in s:
+            if char in mapping.keys():
+                if stack:
+                    top_element = stack.pop()
+                else:
+                    top_element = '#'
+
+                if mapping[char] != top_element:
+                    return False
+            else:
+                stack.append(char)
+
+        return not stack
+
 if __name__ == '__main__':
     print(P20ValidParentheses.is_valid('()'))
     print(P20ValidParentheses.is_valid('(('))
@@ -87,3 +113,6 @@ if __name__ == '__main__':
     print(P20ValidParentheses.is_valid('{[]}'))
     print(P20ValidParentheses.is_valid(''))
     print(P20ValidParentheses.is_valid('()['))
+
+    print(P20ValidParentheses().isValid(''))
+    print(P20ValidParentheses().isValid('()['))
