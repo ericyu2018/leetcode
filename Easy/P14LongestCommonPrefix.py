@@ -71,6 +71,32 @@ class P14LongestCommonPrefix(object):
                         return longest_common_prefix_candidate
 
 
+    def longestCommonPrefix(self, strs):
+        if strs is None or len(strs) == 0:
+            return ""
+        else:
+            return self.longestCommonPrefixHelper(strs, 0, len(strs) - 1)
+
+    # divide and conquer
+    def longestCommonPrefixHelper(self, strs, start_index, end_index):
+        if start_index == end_index:
+            return strs[start_index]
+        else:
+            mid = int((start_index + end_index) / 2)
+            lcp_left = self.longestCommonPrefixHelper(strs, start_index, mid)
+            lcp_right = self.longestCommonPrefixHelper(strs, mid + 1, end_index)
+            return self.commonPrefix(lcp_left, lcp_right)
+
+    def commonPrefix(self, left_string, right_string):
+        min_length = min(len(left_string), len(right_string))
+
+        for i in range(0, min_length):
+            if left_string[i] != right_string[i]:
+                return left_string[0:i]
+
+        return left_string[0:min_length]
+
+
 if __name__ == '__main__':
     print(P14LongestCommonPrefix.longest_common_prefix(["flower", "flow", "flight"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["dog", "racecar", "car"]))
@@ -81,3 +107,5 @@ if __name__ == '__main__':
     print(P14LongestCommonPrefix.longest_common_prefix(["a"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["abca", "aba", "aaab"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["flower", "flow", "flight", "floa"]))
+    print("*" * 50)
+    print(P14LongestCommonPrefix().longestCommonPrefix(["flower", "flow", "flight", "floa"]))
