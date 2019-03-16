@@ -60,7 +60,7 @@ class P14LongestCommonPrefix(object):
 
             shortest_string_value = strs[shortest_string_index]
 
-            for i in range(0, len(strs) + 1):
+            for i in range(0, len(shortest_string_value)):
                 longest_common_prefix_candidate = shortest_string_value[0:len(shortest_string_value)-i].lower()
                 find_count = 0
                 for item in strs:
@@ -80,3 +80,4 @@ if __name__ == '__main__':
     print(P14LongestCommonPrefix.longest_common_prefix(["", ""]))
     print(P14LongestCommonPrefix.longest_common_prefix(["a"]))
     print(P14LongestCommonPrefix.longest_common_prefix(["abca", "aba", "aaab"]))
+    print(P14LongestCommonPrefix.longest_common_prefix(["flower", "flow", "flight", "floa"]))
