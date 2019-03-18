@@ -51,10 +51,42 @@ class P28ImplementStrstr(object):
         if needle not in haystack:
             return -1
         else:
-            return haystack.find(needle)
+            #return haystack.find(needle)
+            return haystack.index(needle)
+
+    def str_str_bruce(self, haystack, needle):
+        if len(haystack) == 0 and len(needle) == 0:
+            return 0
+
+        if len(haystack) == 0 and len(needle) != 0:
+            return -1
+
+        if needle not in haystack:
+            return -1
+        else:
+            start_position = 0
+            pattern_position = 0
+
+            while start_position < len(haystack) and pattern_position < len(needle):
+                if haystack[start_position] == needle[pattern_position]:
+                    start_position += 1
+                    pattern_position += 1
+                else:
+                    start_position = start_position - pattern_position + 1
+                    pattern_position = 0
+
+            if pattern_position >= len(needle):
+                return start_position - pattern_position
+            else:
+                return -1
 
 if __name__ == '__main__':
     print(P28ImplementStrstr.strStr('', ''))
     print(P28ImplementStrstr.strStr('', 'aaa'))
     print(P28ImplementStrstr.strStr('hello', 'll'))
     print(P28ImplementStrstr.strStr('aaaaa', 'bba'))
+
+    print(P28ImplementStrstr().str_str_bruce('', ''))
+    print(P28ImplementStrstr().str_str_bruce('', 'aaa'))
+    print(P28ImplementStrstr().str_str_bruce('hello', 'll'))
+    print(P28ImplementStrstr().str_str_bruce('aaaaa', 'bba'))
