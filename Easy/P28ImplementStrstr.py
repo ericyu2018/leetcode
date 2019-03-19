@@ -80,6 +80,47 @@ class P28ImplementStrstr(object):
             else:
                 return -1
 
+
+    def str_str_kmp_get_next(self, pattern_string):
+        pattern_string_length = len(pattern_string)
+        index = 0
+        next_array = list()
+        next_array.append(-1)
+        jump_value = -1
+
+        while index < pattern_string_length:
+            if jump_value == -1 or pattern_string[index] == pattern_string[jump_value]:
+                index += 1
+                jump_value += 1
+                next_array.insert(index, jump_value)
+            else:
+                jump_value = next_array[jump_value]
+
+        print(next_array)
+
+    def str_str_kmp(self, main_string, pattern_string):
+        main_string_length = len(main_string)
+        pattern_string_length = len(pattern_string)
+        index = 0
+        jump_value = -1
+
+        next_array = list()
+        next_array.append(-1)
+
+        while index < main_string_length and jump_value < pattern_string_length:
+            if jump_value == -1 or main_string[index] == pattern_string[jump_value]:
+                index += 1
+                jump_value += 1
+                next_array.insert(index, jump_value)
+            else:
+                jump_value = next_array[jump_value]
+
+        if index >= pattern_string_length:
+            return index - pattern_string_length
+        else:
+            return -1
+
+
 if __name__ == '__main__':
     print(P28ImplementStrstr.strStr('', ''))
     print(P28ImplementStrstr.strStr('', 'aaa'))
@@ -90,3 +131,8 @@ if __name__ == '__main__':
     print(P28ImplementStrstr().str_str_bruce('', 'aaa'))
     print(P28ImplementStrstr().str_str_bruce('hello', 'll'))
     print(P28ImplementStrstr().str_str_bruce('aaaaa', 'bba'))
+
+    print('*' * 60)
+    P28ImplementStrstr().str_str_kmp_get_next('abaabbabaab')
+    print(P28ImplementStrstr().str_str_kmp('abaabaabbabaaabaabbabaab','abaabbabaab'))
+    print(P28ImplementStrstr().str_str_kmp('hello', 'll'))
