@@ -99,6 +99,15 @@ class P28ImplementStrstr(object):
         print(next_array)
 
     def str_str_kmp(self, main_string, pattern_string):
+        if len(main_string) == 0 and len(pattern_string) == 0:
+            return 0
+
+        if len(main_string) == 0 and len(pattern_string) != 0:
+            return -1
+
+        if pattern_string not in main_string:
+            return -1
+
         main_string_length = len(main_string)
         pattern_string_length = len(pattern_string)
         index = 0
@@ -136,3 +145,4 @@ if __name__ == '__main__':
     P28ImplementStrstr().str_str_kmp_get_next('abaabbabaab')
     print(P28ImplementStrstr().str_str_kmp('abaabaabbabaaabaabbabaab','abaabbabaab'))
     print(P28ImplementStrstr().str_str_kmp('hello', 'll'))
+    print(P28ImplementStrstr().str_str_kmp('aaaaa', 'bba'))
