@@ -30,7 +30,6 @@ minStack.getMin();   --> Returns -2.
     
 """
 # coding: utf-8
-import sys
 
 class P155MinStack(object):
     def __init__(self):
