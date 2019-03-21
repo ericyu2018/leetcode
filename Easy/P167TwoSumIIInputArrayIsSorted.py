@@ -54,6 +54,21 @@ class P167TwoSumIIInputArrayIsSorted(object):
 
         return -1
 
+
+    def two_sum_2(self, nums, target):
+        nums_map = dict()
+
+        for i in range(0, len(nums)):
+            complement = target - nums[i]
+            if complement in nums_map.keys():
+                return list((nums_map.get(complement)+1, i+1))
+            nums_map[nums[i]] = i
+
+        raise Exception('no solution')
+
+
+
 if __name__ == '__main__':
     print(P167TwoSumIIInputArrayIsSorted().find_complement_index([1,2,3,4,4,9,56,90],8, 0))
     print(P167TwoSumIIInputArrayIsSorted().two_Sum([1,2,3,4,4,9,56,90],8))
+    print(P167TwoSumIIInputArrayIsSorted().two_sum_2([1, 2, 3, 4, 4, 9, 56, 90], 8))
