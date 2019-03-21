@@ -77,9 +77,23 @@ class P53MaximumSubarray(object):
 
         return sum_value
 
+    def maxSubArray2(self, nums):
+        result = nums[0]
+        sum = 0
+
+        for num in nums:
+            if sum > 0:
+                sum = sum + num
+            else:
+                sum = num
+            result = max(result, sum)
+
+        return result
+
 if __name__ == '__main__':
    print(P53MaximumSubarray().maxSubArray(None))
    print(P53MaximumSubarray().maxSubArray([]))
    print(P53MaximumSubarray().maxSubArray([7]))
    print(P53MaximumSubarray().maxSubArray([1, -1, 1]))
    print(P53MaximumSubarray().maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+   print(P53MaximumSubarray().maxSubArray2([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
