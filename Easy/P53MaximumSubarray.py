@@ -95,5 +95,5 @@ if __name__ == '__main__':
    print(P53MaximumSubarray().maxSubArray([]))
    print(P53MaximumSubarray().maxSubArray([7]))
    print(P53MaximumSubarray().maxSubArray([1, -1, 1]))
-   print(P53MaximumSubarray().maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+   print(P53MaximumSubarray().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
    print(P53MaximumSubarray().maxSubArray2([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
