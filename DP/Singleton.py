@@ -44,3 +44,17 @@ if __name__ == '__main__':
     # property assigned to obj2 and obj3 will not be effective because of singleton instance
     print(obj2.gender)
     print(obj2.name)
+
+    # they are different object because they are not created using static method of the singleton class
+    obj4 = Singleton('Eric','male')
+    obj5 = Singleton('Tom', 'male')
+    obj6 = Singleton('Eric', 'female')
+    print(obj4)
+    print(obj5)
+    print(obj6)
+    print(id(obj4))
+    print(id(obj5))
+    print(id(obj6))
+    print(obj4.name)
+    print(obj5.name)
+    print(obj6.gender)
