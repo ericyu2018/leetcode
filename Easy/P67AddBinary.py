@@ -62,5 +62,14 @@ class P67AddBinary(object):
         return result
 
 
+    @staticmethod
+    def add_binary2(a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: str
+        """
+        return bin(int(a, 2) + int(b, 2))[2:]
 if __name__ == '__main__':
-    print(P67AddBinary.add_binary("1010","1011"))
+    print(P67AddBinary.add_binary("1010", "1011"))
+    print(P67AddBinary.add_binary2("1010", "1011"))
