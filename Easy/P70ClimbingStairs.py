@@ -53,6 +53,22 @@ class P70ClimbingStairs(object):
         else:
             return P70ClimbingStairs.climb_stairs(n-1) + P70ClimbingStairs.climb_stairs(n-2)
 
+    @staticmethod
+    def climb_stairs2(n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        step_list = list()
+        step_list.append(1)
+        step_list.append(1)
+
+        for index in range(2, n+1):
+            step_list.append(step_list[index - 1] + step_list[index - 2])
+
+        return step_list[n]
+
+
 if __name__ == '__main__':
     print(P70ClimbingStairs.climb_stairs(1))
     print(P70ClimbingStairs.climb_stairs(2))
@@ -61,6 +77,8 @@ if __name__ == '__main__':
     print(P70ClimbingStairs.climb_stairs(5))
     print(P70ClimbingStairs.climb_stairs(6))
     print(P70ClimbingStairs.climb_stairs(38))
+    print(P70ClimbingStairs.climb_stairs(44))
+    print(P70ClimbingStairs.climb_stairs2(44))
 
 
 
