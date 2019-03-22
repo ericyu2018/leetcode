@@ -46,10 +46,16 @@ class P69Sqrtx(object):
 
         return int(math.sqrt(x))
 
+    @staticmethod
+    def my_Sqrt2(x):
+        return int(pow(x, 1/2))
+
+
 if __name__ == '__main__':
     try:
        # print(P69Sqrtx.my_Sqrt(3.14))
        # print(P69Sqrtx.my_Sqrt(-7))
         print(P69Sqrtx.my_Sqrt(8))
+        print(P69Sqrtx.my_Sqrt2(8))
     except Exception as e:
         print(e)
