@@ -55,6 +55,30 @@ class P66PlusOne(object):
             digits_int = digits_int + 1
             return [int(x) for x in list(str(digits_int))]
 
+    @staticmethod
+    def plus_one2(digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+
+        digits_length = len(digits)
+
+        if digits is None or digits_length == 0:
+            return list()
+        else:
+            for index in range(digits_length -1, -1, -1):
+                if digits[index] != 9:
+                    digits[index] += 1
+                    return digits
+                else:
+                    digits[index] = 0
+
+        if digits[0] == 0:
+            digits.insert(0, 1)
+
+        return digits
+
 if __name__ == '__main__':
     print(P66PlusOne.plus_one([1,2,3]))
     print(P66PlusOne.plus_one([4,3,2,1]))
@@ -63,4 +87,7 @@ if __name__ == '__main__':
     print(P66PlusOne.plus_one(None))
     print(P66PlusOne.plus_one(list()))
     print(P66PlusOne.plus_one([9, 'B', 9]))
-
+    print('*' * 60)
+    print(P66PlusOne.plus_one2([1,2,3]))
+    print(P66PlusOne.plus_one2([4,3,2,1]))
+    print(P66PlusOne.plus_one2([9, 9, 9]))
