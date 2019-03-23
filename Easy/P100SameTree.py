@@ -69,6 +69,50 @@ class P100SameTree(object):
         else:
             return self.is_same_tree(p.left, q.left) and self.is_same_tree(p.right, q.right) and p.val == q.val
 
+    def is_same_tree2(self, p, q):
+        if p is None and q is None:
+            return True
+        elif p is None or q is None:
+            return False
+        else:
+            p_stack = list()
+            q_stack = list()
+
+            # push root node of both tree to stacks
+            p_stack.append(p)
+            q_stack.append(q)
+
+            # when both stacks are not empty
+            while len(p_stack) != 0 and len(q_stack) !=0:
+                p = p_stack.pop()
+                q = q_stack.pop()
+
+                if p.val != q.val:
+                    return False
+
+                # check right child
+                if p.right is not None:
+                    if q.right is not None:
+                        p_stack.append(p.right)
+                        q_stack.append(q.right)
+                    else:
+                        return False
+                else:
+                    if q.right is not None:
+                        return False
+
+                # check left child
+                if p.left is not None:
+                    if q.left is not None:
+                        p_stack.append(p.left)
+                        q_stack.append(q.left)
+                    else:
+                        return False
+                else:
+                    if q.left is not None:
+                        return False
+
+            return True
 
 if __name__ == '__main__':
     t1_node1 = TreeNode(1)
@@ -107,3 +151,4 @@ if __name__ == '__main__':
     t2_node3.right = t2_node7
 
     print(P100SameTree().is_same_tree(t1_node1, t2_node1))
+    print(P100SameTree().is_same_tree2(t1_node1, t2_node1))
