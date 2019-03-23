@@ -52,9 +52,35 @@ class P88MergeSortedArray(object):
 
         nums1.sort()
 
+
+    def merge2(self, nums1, m, nums2, n):
+        if len(nums1) - m < n:
+            raise Exception('Not enough space in nums1')
+
+        if len(nums2) != n:
+            raise ValueError('nums2 length provided is not correct')
+
+        while m != 0 and n != 0:
+            if nums2[n-1] > nums1[m-1]:
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+            else:
+                nums1[m + n - 1] = nums1[m - 1]
+                m -= 1
+
+        # to make sure nums1 have copied of nums2 if m = 0
+        for i in range(n):
+            nums1[i] = nums2[i]
+
 if __name__ == '__main__':
     nums1 = [1, 2, 3, 0, 0, 0]
     nums2 = [2, 5, 6]
 
-    P88MergeSortedArray().merge(nums1, 3, nums2, 3)
+    nums3 = [0]
+    nums4 = [1]
+    #P88MergeSortedArray().merge(nums1, 3, nums2, 3)
+    P88MergeSortedArray().merge2(nums1, 3, nums2, 3)
     print(nums1)
+    print('*' * 60)
+    P88MergeSortedArray().merge2(nums3, 0, nums4, 1)
+    print(nums3)
