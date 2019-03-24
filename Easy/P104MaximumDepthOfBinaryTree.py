@@ -63,6 +63,14 @@ class P104MaximumDepthOfBinaryTree(object):
 
         return tree_depth
 
+    def max_depth(self, root):
+        if root is None:
+            return 0
+        else:
+            left_tree_depth = self.max_depth(root.left)
+            right_tree_depth = self.max_depth(root.right)
+            return max(left_tree_depth, right_tree_depth) + 1
+
 if __name__ == '__main__':
     n1 = TreeNode(1)
     n2 = TreeNode(2)
