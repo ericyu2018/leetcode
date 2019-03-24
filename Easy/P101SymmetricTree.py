@@ -47,7 +47,8 @@ class P101SymmetricTree(object):
         :type root: TreeNode
         :rtype: bool
         """
-        return self.is_symmetric_help(root, root)
+        #return self.is_symmetric_help(root, root)
+        return self.is_symmetric_help2(root, root)
 
     def is_symmetric_help(self, t1, t2):
         if t1 is None and t2 is None:
@@ -58,6 +59,29 @@ class P101SymmetricTree(object):
             return self.is_symmetric_help(t1.left, t2.right) and self.is_symmetric_help(t1.right, t2.left)
         else:
             return False
+
+    def is_symmetric_help2(self, t1, t2):
+        queue = list()
+        queue.append(t1)
+        queue.append(t2)
+
+        while len(queue) != 0:
+            t1 = queue.pop(0)
+            t2 = queue.pop(0)
+
+            if t1 is None and t2 is None:
+                continue
+            elif t1 is None or t2 is None:
+                return False
+            elif t1.val != t2.val:
+                return False
+            else:
+                queue.append(t1.left)
+                queue.append(t2.right)
+                queue.append(t1.right)
+                queue.append(t2.left)
+
+        return True
 
 if __name__ == '__main__':
     n1 = TreeNode(1)
