@@ -57,14 +57,12 @@ class P108ConvertSortedArrayToBinarySearchTree(object):
 
     def traverse_tree(self, root):
         if root is not None:
-            #print('root = {0}'.format(root.val))
             self.traverse_tree(root.left)
             print(root.val)
             self.traverse_tree(root.right)
 
 if __name__ == '__main__':
-    nums = [-10, -3, 0, 5, 9]
-    #nums = [-100, -88, -50, -10, -3, 0, 5, 9]
+    nums = [-100, -88, -50, -10, -3, 0, 5, 9, 70]
     root = P108ConvertSortedArrayToBinarySearchTree().sorted_array_to_BST(nums)
     P108ConvertSortedArrayToBinarySearchTree().traverse_tree(root)
 
