@@ -124,3 +124,4 @@ if __name__ == '__main__':
     print(P8StringToIntegerAtoi().myAtoi("-0012a42"))
     print(P8StringToIntegerAtoi().myAtoi("+1"))
     print(P8StringToIntegerAtoi().myAtoi("+-1"))
+    print(P8StringToIntegerAtoi().myAtoi("-+1"))
