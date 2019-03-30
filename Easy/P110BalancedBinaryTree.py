@@ -62,8 +62,8 @@ class P110BalancedBinaryTree(object):
         if root is None:
             return True
         else:
-            left_tree_depth = self.tree_depth(root.left, 0)
-            right_tree_depth = self.tree_depth(root.right, 0)
+            left_tree_depth = self.tree_depth(root.left, 1)
+            right_tree_depth = self.tree_depth(root.right, 1)
 
             delta = abs(left_tree_depth - right_tree_depth)
 
