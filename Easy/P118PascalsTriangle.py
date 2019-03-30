@@ -45,7 +45,6 @@ class P118PascalsTriangle(object):
             while numRows - 2 > 0:
                 known_result.append(self.generate_next_line(known_result[-1]))
                 numRows -= 1
-            print(known_result)
             return known_result
 
     def generate_next_line(self, current_line):
@@ -62,5 +61,5 @@ class P118PascalsTriangle(object):
         return next_line
 
 if __name__ == '__main__':
-    P118PascalsTriangle().generate(5)
+    print(P118PascalsTriangle().generate(5))
 
