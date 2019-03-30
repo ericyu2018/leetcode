@@ -53,7 +53,7 @@ class P155MinStack(object):
         :rtype: None
         """
         if len(self.min_stack) > 0:
-            y = self.min_stack.pop()
+            self.min_stack.pop()
         else:
             raise RuntimeError('Stack empty')
 
@@ -71,12 +71,7 @@ class P155MinStack(object):
         :rtype: int
         """
         if len(self.min_stack) > 0:
-            temp = self.min_stack[0]
-            for index in range(1, len(self.min_stack)):
-                if self.min_stack[index] < temp:
-                    temp = self.min_stack[index]
-
-            return temp
+            return min(self.min_stack)
         else:
             raise RuntimeError('Stack empty')
 
