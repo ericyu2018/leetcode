@@ -69,6 +69,24 @@ class P141LinkedListCycle(object):
 
         return False
 
+    def has_cycle1(self, head):
+
+        if head is None or head.next is None:
+            return False
+        else:
+            slow = head
+            fast = head.next
+
+            while slow != fast:
+                if fast is None or fast.next is None:
+                    return False
+                else:
+                    slow = slow.next
+                    fast = fast.next.next
+
+            return True
+
+
 if __name__ == '__main__':
     n1 = ListNode(3)
     n2 = ListNode(2)
@@ -81,4 +99,5 @@ if __name__ == '__main__':
     n4.next = n1
 
     print(P141LinkedListCycle().has_cycle(n1))
+    print(P141LinkedListCycle().has_cycle1(n1))
 
