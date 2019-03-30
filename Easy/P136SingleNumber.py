@@ -49,8 +49,24 @@ class P136SingleNumber(object):
             else:
                 return nums[index]
 
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        a = 0
+        for num in nums:
+            a = a ^ num
+        return a
 
+
+    def singleNumber2(self, nums):
+        return 2 * sum(set(nums)) - sum(nums)
 
 if __name__ == '__main__':
     print(P136SingleNumber().single_number([2, 2, 1]))
     print(P136SingleNumber().single_number([4, 1, 2, 1, 2]))
+    print(P136SingleNumber().singleNumber([2, 2, 1]))
+    print(P136SingleNumber().singleNumber([4, 1, 2, 1, 2]))
+    print(P136SingleNumber().singleNumber2([2, 2, 1]))
+    print(P136SingleNumber().singleNumber2([4, 1, 2, 1, 2]))
