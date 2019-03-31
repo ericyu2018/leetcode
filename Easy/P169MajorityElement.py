@@ -50,8 +50,19 @@ class P169MajorityElement(object):
                 if number_count_mapping.get(num) > expected_length:
                     return num
 
+    # not work if there is no majority element in the input array
+    def majority_element2(self, nums):
+        nums.sort()
+
+        return nums[int(math.floor(len(nums)/2))]
+
 if __name__ == '__main__':
     print(P169MajorityElement().majority_element([3, 2, 3]))
     print(P169MajorityElement().majority_element([2, 2, 1, 1, 1, 2, 2]))
     print(P169MajorityElement().majority_element([1]))
     print(P169MajorityElement().majority_element([1, 2]))
+
+    print(P169MajorityElement().majority_element2([3, 2, 3]))
+    print(P169MajorityElement().majority_element2([2, 2, 1, 1, 1, 2, 2]))
+    print(P169MajorityElement().majority_element2([1]))
+    print(P169MajorityElement().majority_element2([1, 2]))
