@@ -55,6 +55,27 @@ class P160IntersectionOfTwoLinkedLists(object):
             print(head.val, end=' ')
             head = head.next
 
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        a = headA
+        b = headB
+        while a != b:
+            if a is not None:
+                a = a.next
+            else:
+                a = headB
+
+            if b is not None:
+                b = b.next
+            else:
+                b = headA
+        print(b.val)
+        print(a.val)
+        return a
+
 if __name__ == '__main__':
     a1 = ListNode(4)
     a2 = ListNode(1)
@@ -77,3 +98,4 @@ if __name__ == '__main__':
 
 
     print(P160IntersectionOfTwoLinkedLists().get_intersection_node(a1, b1).val)
+    print(P160IntersectionOfTwoLinkedLists().getIntersectionNode(a1, b1).val)
