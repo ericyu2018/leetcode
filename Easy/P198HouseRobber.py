@@ -46,7 +46,25 @@ class P198HouseRobber(object):
         else:
             return 0
 
+    def rob2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if nums == []:
+            return 0
+        if len(nums) == 1:
+            return max(nums)
+        dp = [0 for x in range(len(nums))]
+        dp[0] = nums[0]
+        dp[1] = max(nums[1], nums[0])
+        for i in range(2, len(nums)):
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
+
+        return dp[len(nums) - 1]
 
 if __name__ == '__main__':
     print(P198HouseRobber().rob([1, 2, 3, 1]))
     print(P198HouseRobber().rob([2, 7, 9, 3, 1]))
+    print(P198HouseRobber().rob2([1, 2, 3, 1]))
+    print(P198HouseRobber().rob2([2, 7, 9, 3, 1]))
