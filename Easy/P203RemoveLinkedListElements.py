@@ -46,7 +46,7 @@ class P203RemoveLinkedListElements(object):
                     current = current.next
                 else:
                     current = None
-                head = current
+            head = current
 
             while current is not None and current.next is not None:
                 if current.next.val != val:
