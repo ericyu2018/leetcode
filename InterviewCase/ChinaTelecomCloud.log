@@ -1,0 +1,6 @@
+[2019-03-20 04:50:26] [Info]: Start to deploy App1 with json args: {"employees":[{"firstName":"Bill","lastName":"Gates"},{"firstName":"George","lastName":"Bush"},{"firstName":"Thomas","lastName":"Carter"}]}
+[2019-03-20 04:50:27] [Info]: Not important log
+[2019-03-20 04:50:28] [Info]: Completed to deploy App1, Success
+[2019-03-20 04:50:29] [Info]: Start to deploy App2 with json args: {"employees":[{"firstName":"Eric","lastName":"Yu"},{"firstName":"Hello","lastName":"Kitty"},{"firstName":"Tom","lastName":"Cat"}]}
+[2019-03-20 04:50:30] [Info]: Not important log
+[2019-03-20 04:50:31] [Info]: Completed to deploy App2, Fail
