@@ -13,6 +13,7 @@ Description :   Test developer job in eCloud team, Cloud team of ChinaTelecom
     
 """
 # coding: utf-8
+import json
 
 class ChinaTelecomCloud(object):
     def format_content_coming_from_file(self, text_file):
@@ -48,8 +49,31 @@ class ChinaTelecomCloud(object):
                         wf.writelines('{0}\n'.format(item))
                         print(item)
 
-    def filter_key_information_from_log_file_and_output_result_to_json(self, log_file):
-        pass
+    def filter_key_information_from_log_file_and_output_result_to_json(self, log_file, app_name):
+        log_list = list()
+        with open(log_file, 'r', encoding='utf-8') as file:
+            while True:
+                line = file.readline()
+                if line == '':
+                    break
+                else:
+                    if line.find(app_name) != -1:
+                        log_list.append(line)
+                    else:
+                        continue
+
+        if log_list[0].find('json args:') != -1:
+            log_list[0] = log_list[0].split('json args:')[1].strip()
+
+        if log_list[1].find('Success') != -1:
+            result = 'Success'
+        else:
+            result = 'Fail'
+
+        json_dict = dict()
+        json_dict[result] = {app_name: log_list[0]}
+        with open('output.json', 'w+') as dump_f:
+            json.dump(json_dict, dump_f)
 
 
     def use_of_stack(self):
@@ -61,3 +85,4 @@ class ChinaTelecomCloud(object):
 if __name__ == '__main__':
     ctyun_test = ChinaTelecomCloud()
     ctyun_test.format_content_coming_from_file('ChinaTelecomCloud.txt')
+    print(ctyun_test.filter_key_information_from_log_file_and_output_result_to_json('ChinaTelecomCloud.log', 'App1'))
