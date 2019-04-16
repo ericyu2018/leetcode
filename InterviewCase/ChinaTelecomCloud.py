@@ -14,6 +14,43 @@ Description :   Test developer job in eCloud team, Cloud team of ChinaTelecom
 """
 # coding: utf-8
 import json
+import functools
+import time
+from datetime import datetime
+
+
+
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        date_str = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+        print("[{0}] Start to call function {1}".format(date_str, func.__name__))
+        r = func(*args, **kwargs)
+        date_str = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+        print("[{0}] Completed to call function {1}".format(date_str, func.__name__))
+        return r
+    return wrapper
+
+
+def log2(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            date_str = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+            print("[{0}] {1}".format(date_str, text))
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+def metric(func):
+    def wrapper(*args, **kwargs):
+        start_time = int(time.time())
+        r = func(*args, **kwargs)
+        complete_time = int(time.time())
+        print('Completed function call in {0} seconds'.format(complete_time - start_time))
+        return r
+    return wrapper
 
 class ChinaTelecomCloud(object):
     def format_content_coming_from_file(self, text_file):
@@ -50,6 +87,12 @@ class ChinaTelecomCloud(object):
                         print(item)
 
     def filter_key_information_from_log_file_and_output_result_to_json(self, log_file, app_name):
+        '''
+        Get application name, deployment status and deployment argument from log file and dump these information to json file
+        :param log_file:
+        :param app_name:
+        :return:
+        '''
         log_list = list()
         with open(log_file, 'r', encoding='utf-8') as file:
             while True:
@@ -79,10 +122,30 @@ class ChinaTelecomCloud(object):
     def use_of_stack(self):
         pass
 
+    @log
     def use_of_decorator(self):
-        pass
+        print('This is a common function which will decorated by a decorator with default log message')
+        time.sleep(3)
+
+    @log2('I am user defined message')
+    def use_of_decorator2(self):
+        print('This is a common function which will decorated by a decorator with user defined log message')
+        time.sleep(3)
+
+    @metric
+    def use_of_decorator3(self):
+        print('This method will sleep 5 seconds')
+        time.sleep(5)
 
 if __name__ == '__main__':
     ctyun_test = ChinaTelecomCloud()
     ctyun_test.format_content_coming_from_file('ChinaTelecomCloud.txt')
-    print(ctyun_test.filter_key_information_from_log_file_and_output_result_to_json('ChinaTelecomCloud.log', 'App1'))
+    ctyun_test.filter_key_information_from_log_file_and_output_result_to_json('ChinaTelecomCloud.log', 'App1')
+    ctyun_test.use_of_decorator()
+
+    # function is also an object and can be assigned to a parameter. Don't use parenthesis when assign func to parameter
+    f = ctyun_test.use_of_decorator2
+    f()
+    print(f.__name__)
+
+    ctyun_test.use_of_decorator3()
