@@ -19,7 +19,6 @@ import time
 from datetime import datetime
 
 
-
 def log(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -51,6 +50,7 @@ def metric(func):
         print('Completed function call in {0} seconds'.format(complete_time - start_time))
         return r
     return wrapper
+
 
 class ChinaTelecomCloud(object):
     def format_content_coming_from_file(self, text_file):
