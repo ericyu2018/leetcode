@@ -27,6 +27,9 @@ For example, given n = 3, a solution set is:
 
 
 class P22GenerateParentheses(object):
+    def __init__(self):
+        self.backtrack_accessed = 0
+
     def generateParenthesis(self, n):
         """
         :type n: int
@@ -37,6 +40,8 @@ class P22GenerateParentheses(object):
         return solution_list
 
     def backtrack(self, current_solution_string, solution_list, left_parenthese_count, right_parenthese_count):
+        self.backtrack_accessed += 1
+        print('{0}:{1}:{2}:{3}:{4}'.format(self.backtrack_accessed, current_solution_string, left_parenthese_count, right_parenthese_count, solution_list))
         if left_parenthese_count == 0 and right_parenthese_count == 0:
             solution_list.append(current_solution_string)
             return
