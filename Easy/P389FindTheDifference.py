@@ -49,3 +49,4 @@ class P389FindTheDifference(object):
 
 if __name__ == '__main__':
     print(P389FindTheDifference().findTheDifference('abcd','abcde'))
+    print(P389FindTheDifference().findTheDifference('abcd', 'abcdd'))
