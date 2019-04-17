@@ -42,7 +42,7 @@ class P24SwapNodesInPairs(object):
         new_current = None
         stack = list()
         while current is not None and current.next is not None:
-            while len(stack) != 2 and current is not None:
+            while len(stack) != 2:
                 stack.append(current)
                 current = current.next
 
