@@ -64,7 +64,7 @@ class P24SwapNodesInPairs(object):
 
     def traverse_linked_list(self, head):
         while head is not None:
-            print(head.val, end='->')
+            print('{0}({1})'.format(head.val, id(head)), end='->')
             head = head.next
 
         print('\n')
