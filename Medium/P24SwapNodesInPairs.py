@@ -84,3 +84,6 @@ if __name__ == '__main__':
     P24SwapNodesInPairs().traverse_linked_list(n1)
     new_list = P24SwapNodesInPairs().swapPairs(n1)
     P24SwapNodesInPairs().traverse_linked_list(new_list)
+
+    P24SwapNodesInPairs().traverse_linked_list(n2)
+    P24SwapNodesInPairs().traverse_linked_list(n1)
