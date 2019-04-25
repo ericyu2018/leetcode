@@ -32,7 +32,7 @@ class ListNode(object):
 
 class P206ReverseLinkedList(object):
 
-    def reverse_list(self, head):
+    def reverse_list2(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
@@ -70,6 +70,23 @@ class P206ReverseLinkedList(object):
             print(node.val, end='->')
             node = node.next
         print('NULL')
+
+    def reverse_list(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+
+        previous = None
+        current = head
+
+        while current is not None:
+            next_temp = current.next
+            current.next = previous
+            previous = current
+            current = next_temp
+
+        return previous
 
 if __name__ == '__main__':
     n1 = ListNode(1)
